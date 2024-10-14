@@ -9,12 +9,17 @@
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
+.centered-block {
+  margin: auto;
+}
+
 .header {
   height: 100vh;
   min-height: 600px;
   max-height: 756px;
   display: flex;
   background-color: #f2f2f2;
+  position: relative;
   /* выше установили ограничения для секции */
 }
 
@@ -44,7 +49,7 @@
   text-decoration: none;
 }
 
-.header__main-illustation {
+.header__main-illustration {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -67,9 +72,108 @@
   left: 64px;
   width: 228px;
   height: 32px;
-  background-image: url(/images/logo_place_header.svg);
 }
 
+.content {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0;
+}
+
+.description__two-columns {
+  width: 80%;
+  margin: 100px auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.description__main-text {
+  min-width: 784px;
+  width: 80%;
+
+}
+
+.description__brief {
+  width: 175px;
+  color: #2f80ed;
+  line-height: 1.2;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.span-accent {
+  font-weight: 600;
+}
+
+.description__paragraph {
+  margin-bottom: 30px;
+  line-height: 34px;
+  font-size: 24px;
+}
+
+.description__paragraph:first-child {
+  margin-top: 0;
+}
+
+.description__paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.digits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title {
+  width: 60%;
+  line-height: 1.15;
+  font-size: 60px;
+  font-weight: 600;
+  text-align:center;
+}
+
+.section-subtitle {
+  width: 60%;
+  margin-top: 20px;
+  margin-bottom: 0;
+  line-height: 34px;
+  font-size: 24px;
+  text-align:center;
+  font-weight: normal;
+}
+
+.table {
+  width: 1100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-bottom: 100px;
+}
+
+.table__cell {
+  width: 250px;
+  margin-top: 60px;
+}
+
+.cell__heading {
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 1.15;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.cell__text {
+  line-height: 1.2;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
 /* и элемента с модификатором вида ключ-значение */
 .table__cell_theme_dark {
@@ -77,20 +181,4 @@
   color: white;
   margin-right: 0;
   margin-top: 80px;
-}
-
-div {
-  border: 3px solid red;
-}
-
-h1 {
-  border: 3px solid red;
-}
-
-p {
-  border: 3px solid red;
-}
-
-img {
-  border: 3px solid red;
 }
