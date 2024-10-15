@@ -31,6 +31,7 @@
   margin-left: 64px;
   text-align: start;
   align-self: center;
+  z-index: 2;
 
 }
 
@@ -42,11 +43,13 @@
   line-height: 25px;
   font-size: 18px;
   font-weight: normal;
+  z-index: 2;
 }
 
 .header__link {
   color: #2f80ed;
   text-decoration: none;
+  z-index: 2;
 }
 
 .header__main-illustration {
@@ -55,6 +58,7 @@
   right: 0;
   width: 765px;
   height: 608px;
+  z-index: 1;
 }
 
 .header__square-pic {
@@ -64,6 +68,7 @@
   width: 568px;
   height: 568px;
   background-color: #2f80ed;
+  z-index: 1;
 }
 
 .block_key_value {
@@ -104,7 +109,7 @@
   font-weight: normal;
 }
 
-.span-accent {
+.description__span-accent {
   font-weight: 600;
 }
 
