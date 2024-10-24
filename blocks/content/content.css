@@ -1,0 +1,6 @@
+.content {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0;
+}

@@ -1,0 +1,8 @@
+.column__links {
+  display: flex;
+  flex-direction: column;
+  color: #f2f2f2;
+  text-decoration: none;
+  line-height: 30px;
+  font-size: 18px;
+}
