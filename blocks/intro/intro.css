@@ -1,0 +1,6 @@
+.intro {
+    display: border-box;
+    margin-top: 92px;
+    margin-left: calc((100% - 984px)/2);
+    width: 690px;
+}
