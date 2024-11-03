@@ -50,4 +50,7 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/footer/__link/footer__link.css);
-@import url();
+
+@import url(../blocks/smallnoutbook/с1024до1280.css);
+@import url(../blocks/планшет/с768до1024.css);
+@import url(../blocks/телефон/от320до768.css);

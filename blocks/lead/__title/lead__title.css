@@ -1,11 +1,11 @@
 .lead__title {
     color: white;
-    font-size: 6rem;
+    font-size: 96px;
     line-height: 100px;
-    width: 720px;
-    height: 200px;
+    max-width: 720px;
+    min-height: 200px;
     font-weight: 900;
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
     text-align: center;
     margin-top: 0;
 }

@@ -1,0 +1,95 @@
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .header {
+        max-width: 720px;
+    }
+
+    .lead {
+        max-width: 768px;
+        max-height: 862px;
+        margin-top: 48px;
+    }
+
+    .lead__subtitle {
+        margin-bottom: 56px;
+    }
+
+    .lead__image {
+        max-width: 768px;
+        max-height: 480px;
+    }
+
+    .lead__caption {
+        width: 720px;
+    }
+
+    .intro {
+        margin-top: 88px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 720px;
+    }
+
+    .photo-grid {
+        margin-top: 88px;
+        max-width: 720px;
+        margin-right: auto;
+        margin-left: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: 16px;
+    }
+
+    .places {
+        max-width: 720px;
+        margin-top: 88px;
+    }
+
+    .place {
+        min-height: 434px;
+        margin-bottom: 73px;
+    }
+
+    .first_column {
+        width: 340px;
+    }
+
+    .second_column {
+        width: 352px;
+    }
+
+    .place__title {
+        font-size: 42px;
+        font-weight: 900;
+        line-height: 46px;
+    }
+
+    .place__image {
+        min-height: 340px;
+    }
+
+    .place__url-heading-spetial {
+        margin-top: 46px;
+    }
+
+    .place__url-heading {
+        margin-top: 0;
+    }
+
+    .place__paragraph {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    .cover {
+        height: 480px;
+        max-width: 768px;
+    }
+
+    .footer {
+        max-width: 720px;
+        margin: 88px auto 24px auto;
+    }
+
+
+}

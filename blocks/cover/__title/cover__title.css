@@ -1,6 +1,6 @@
 .cover__title {
-    width: 560px;
-    height: 152px;
+    max-width: 560px;
+    min-height: 152px;
     color: white;
     font-size: 72px;
     line-height: 76px;

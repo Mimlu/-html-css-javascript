@@ -3,7 +3,7 @@
     margin-right: auto;
     margin-left: auto;
     display: flex;
-    width: 1184px;
-    height: 52px;
+    max-width: 1184px;
+    min-height: 52px;
     align-items: flex-end;
 }
