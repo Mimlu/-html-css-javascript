@@ -12,6 +12,7 @@
         max-width: 928px;
         max-height: 962px;
         margin-top: 48px;
+        width: 90%;
     }
 
     .lead__subtitle {
@@ -20,7 +21,6 @@
 
     .lead__image {
         max-width: 928px;
-        max-height: 580px;
     }
 
     .lead__caption {
@@ -29,10 +29,10 @@
 
     .intro {
         margin-left: calc((100% - 928px)/2);
+        width: 80%;
     }
 
     .photo-grid {
-        max-width: 928px;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, 1fr);
         gap: 14px;
@@ -46,13 +46,6 @@
         min-height: 564px;
     }
 
-    .first_column {
-        width: 440px;
-    }
-
-    .second_column {
-        width: 456px;
-    }
 
     .place__image {
         min-height: 440px;
@@ -61,6 +54,7 @@
     .cover {
         max-height: 640px;
         max-width: 1024px;
+        width: 90%;
 
     }
 

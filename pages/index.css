@@ -53,4 +53,6 @@
 
 @import url(../blocks/smallnoutbook/с1024до1280.css);
 @import url(../blocks/планшет/с768до1024.css);
-@import url(../blocks/телефон/от320до768.css);
+@import url(../blocks/телефонменее320/до320.css);
+@import url(../blocks/телефонот320до768/с320до768.css);
+@import url(../blocks/компьютер/noutbookbig.css);

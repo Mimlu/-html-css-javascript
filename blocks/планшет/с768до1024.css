@@ -1,21 +1,31 @@
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .page {
+        min-width: 768px;
+        max-width: 1024px;
+    }
+
     .header {
         max-width: 720px;
     }
 
     .lead {
-        max-width: 768px;
-        max-height: 862px;
+        width: 100%;
         margin-top: 48px;
+    }
+
+    .lead__title {
+        width: 90%;
     }
 
     .lead__subtitle {
         margin-bottom: 56px;
+        width: 80%;
     }
 
     .lead__image {
         max-width: 768px;
         max-height: 480px;
+        width: 100%;
     }
 
     .lead__caption {
@@ -27,17 +37,19 @@
         margin-left: auto;
         margin-right: auto;
         max-width: 720px;
+        width: 90%;
     }
 
     .photo-grid {
         margin-top: 88px;
-        max-width: 720px;
         margin-right: auto;
         margin-left: auto;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(6, 1fr);
         gap: 16px;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 
     .places {
@@ -50,13 +62,6 @@
         margin-bottom: 73px;
     }
 
-    .first_column {
-        width: 340px;
-    }
-
-    .second_column {
-        width: 352px;
-    }
 
     .place__title {
         font-size: 42px;

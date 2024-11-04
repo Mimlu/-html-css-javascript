@@ -3,5 +3,6 @@
     flex-direction: column;
     margin: 0;
     height: 100%;
-    width: 460px;
+    max-width: 460px;
+    width: 47%;
 }
