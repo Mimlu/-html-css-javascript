@@ -152,8 +152,7 @@
     }
 
     .cover {
-        height: 200px;
-        max-width: 320px;
+        width: 100%;
     }
 
     .cover__title {
@@ -176,7 +175,7 @@
         max-width: 186px;
         min-height: 310px;
         align-items: center;
-        margin: 64px auto 24px auto;
+        margin: 64px auto 24px 16px;
 
     }
 
