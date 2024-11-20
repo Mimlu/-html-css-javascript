@@ -1,13 +1,3 @@
-// @todo: Темплейт карточки
-
-// @todo: DOM узлы
-
-// @todo: Функция создания карточки
-
-// @todo: Функция удаления карточки
-
-// @todo: Вывести карточки на страницу
-
 const page = document.querySelector('.page__content');
 const content = document.querySelector('.profile');
 
@@ -19,23 +9,47 @@ const profilePopup = page.querySelector('.popup_type_edit');
 const cardPopup = page.querySelector('.popup_type_new-card');
 const imagePopup = page.querySelector('.popup_type_image');
 
+const popupImage = imagePopup.querySelector('.popup__image');
+const popupCaption = imagePopup.querySelector('.popup__caption');
+
 const template = document.querySelector('#card-template').content;
 
 
 // Функция создания разметки
 function createCard() {
-    console.log('типо создалась фотка ну база')
-    return template.cloneNode(true);
+    const cardElement = template.cloneNode(true);
+    const likeButton = cardElement.querySelector('.card__like-button');
+    const deleteButton = cardElement.querySelector('.card__delete-button');
+
+    likeButton.addEventListener('click', () => {
+        likeButton.classList.toggle('card__like-button_is-active');
+    });
+
+    deleteButton.addEventListener('click', (event) => {
+        const cardItem = event.target.closest('.card'); // Ищем родительский элемент карточки
+        if (cardItem) {
+            cardItem.remove();
+        }
+    });
+
+    return cardElement
   }
 
 //Функция заполнения карточки данными
-function fillCard(cardEl, data) {
-    const cardImage = cardEl.querySelector('.card__image');
-    const cardTitle = cardEl.querySelector('.card__title');
+function fillCard(cardElement, data) {
+    const cardImage = cardElement.querySelector('.card__image');
+    const cardTitle = cardElement.querySelector('.card__title');
 
     cardImage.src = data.link;
+    cardImage.alt = data.name;
     cardTitle.textContent = data.name;
-    console.log('типо даже заполнилост')
+
+    cardImage.addEventListener('click', () => {
+        popupImage.src = data.link;
+        popupImage.alt = data.name;
+        popupCaption.textContent = data.name;
+        openModal(imagePopup);
+    });
 
     return data
 
@@ -45,18 +59,20 @@ function fillCard(cardEl, data) {
 // Функция показа карточек на экране
 function showCards() {
     const placesList = document.querySelector('.places__list');
-    initialCards.forEach(cardData => {
-      const card = createCard();
-      fillCard(card, cardData);
-      placesList.append(card);
-    });
-    console.log('типо должна показываться')
-  }
+    if (placesList.children.length === 0) {
+        initialCards.forEach(cardData => {
+          const card = createCard();
+          fillCard(card, cardData);
+          placesList.appendChild(card);
+        });
+    }
+}
 
 window.addEventListener('DOMContentLoaded', showCards);
 
 //функция открытия
 function openModal(popup) {
+    popup.classList.add('popup_is-animated');
     popup.classList.add('popup_is-opened');
 }
 
@@ -115,32 +131,35 @@ profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 
 
 
-
 //открываем редактор фото
 popupOpennewcard.addEventListener('click', () => {
-    console.log('открыло')
     openModal(cardPopup);
 });
 
 
-const inputCardName = page.querySelector('.popup__input_type_card-name');
-const inputCardUrl = page.querySelector('.popup__input_type_url');
+const newCardPopup = document.querySelector('.popup_type_new-card');
+const newCardForm = newCardPopup.querySelector('.popup__form');
 
+newCardForm.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-function handleCardFormSubmit(evt) {
-    evt.preventDefault();
+    const inputCardName = newCardForm.querySelector('input[name="place-name"]').value;
+    const inputCardUrl = newCardForm.querySelector('input[name="link"]').value;
 
     const newCard = {
-        name: inputCardName.value,
-        link: inputCardUrl.value,
+        name: inputCardName,
+        link: inputCardUrl
     };
 
-    initialCards.unshift(newCard);
+    initialCards.push(newCard);
 
-    closeModal(cardPopup);
+    const card = createCard();
+    fillCard(card, newCard);
+    const placesList = document.querySelector('.places__list');
+    placesList.prepend(card);
+
+    closeModal(newCardPopup);
 
     inputCardName.value = '';
     inputCardUrl.value = '';
-}
-
-profileFormElement.addEventListener('submit', handleCardFormSubmit);
+});
