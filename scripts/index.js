@@ -14,6 +14,10 @@ const popupCaption = imagePopup.querySelector('.popup__caption');
 
 const template = document.querySelector('#card-template').content;
 
+profilePopup.classList.add('popup_is-animated');
+cardPopup.classList.add('popup_is-animated');
+imagePopup.classList.add('popup_is-animated');
+
 
 // Функция создания разметки
 function createCard() {
@@ -70,9 +74,9 @@ function showCards() {
 
 window.addEventListener('DOMContentLoaded', showCards);
 
+
 //функция открытия
 function openModal(popup) {
-    popup.classList.add('popup_is-animated');
     popup.classList.add('popup_is-opened');
 }
 
