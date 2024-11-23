@@ -30,7 +30,7 @@ function createCard() {
     });
 
     deleteButton.addEventListener('click', (event) => {
-        const cardItem = event.target.closest('.card'); // Ищем родительский элемент карточки
+        const cardItem = event.target.closest('.card');
         if (cardItem) {
             cardItem.remove();
         }
@@ -141,9 +141,10 @@ popupOpennewcard.addEventListener('click', () => {
 });
 
 
-const newCardPopup = document.querySelector('.popup_type_new-card');
-const newCardForm = newCardPopup.querySelector('.popup__form');
+const newPopup = document.querySelector('.popup_type_new-card');
+const newCardForm = newPopup.querySelector('.popup__form');
 
+//заполнение новой карточки
 newCardForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -164,6 +165,5 @@ newCardForm.addEventListener('submit', (event) => {
 
     closeModal(newCardPopup);
 
-    inputCardName.value = '';
-    inputCardUrl.value = '';
+    newCardForm.reset();
 });
