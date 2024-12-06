@@ -1,3 +1,9 @@
+import './styles/index.css';
+import { initialCards  } from './cards.js';
+import { createCard } from "./components/card.js";
+import { openModal, closeModal, closeByEsc } from './components/modal.js';
+import { enableValidation } from './components/validate.js'
+
 const page = document.querySelector('.page__content');
 const content = document.querySelector('.profile');
 
@@ -13,31 +19,11 @@ const popupImage = imagePopup.querySelector('.popup__image');
 const popupCaption = imagePopup.querySelector('.popup__caption');
 
 const template = document.querySelector('#card-template').content;
+export {template}
 
 profilePopup.classList.add('popup_is-animated');
 cardPopup.classList.add('popup_is-animated');
 imagePopup.classList.add('popup_is-animated');
-
-
-// Функция создания разметки
-function createCard() {
-    const cardElement = template.cloneNode(true);
-    const likeButton = cardElement.querySelector('.card__like-button');
-    const deleteButton = cardElement.querySelector('.card__delete-button');
-
-    likeButton.addEventListener('click', () => {
-        likeButton.classList.toggle('card__like-button_is-active');
-    });
-
-    deleteButton.addEventListener('click', (event) => {
-        const cardItem = event.target.closest('.card');
-        if (cardItem) {
-            cardItem.remove();
-        }
-    });
-
-    return cardElement
-  }
 
 //Функция заполнения карточки данными
 function fillCard(cardElement, data) {
@@ -75,24 +61,12 @@ function showCards() {
 window.addEventListener('DOMContentLoaded', showCards);
 
 
-//функция открытия
-function openModal(popup) {
-    popup.classList.add('popup_is-opened');
-    document.addEventListener('keydown', closeByEsc);
-}
-
-//функция закрытия любого popup
-function closeModal(popup) {
-    popup.classList.remove('popup_is-opened');
-    document.removeEventListener('keydown', closeByEsc);
-}
-
-
 //прослушивание popup редактирования профиля для открытия
 popupOpenprofile.addEventListener('click', () => {
     openModal(profilePopup);
     fillProfileForm();
 });
+
 
 //прослушивание popup для закрытия
 popupClose.forEach(button => {
@@ -119,6 +93,7 @@ const jobInput = page.querySelector('.popup__input_type_description');
 
 const profileTitle = content.querySelector('.profile__title');
 const profileDescr = content.querySelector('.profile__description');
+
 
 //сохранение данных профиля
 function handleProfileFormSubmit(evt) {
@@ -170,92 +145,24 @@ newCardForm.addEventListener('submit', (event) => {
     newCardForm.reset();
 });
 
-//валидация форм
-const showInputError = (formElement, inputElement, errorMessage) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add('form__input_type_error');
-    errorElement.textContent = errorMessage;
-    errorElement.classList.add('form__input-error_active');
-  };
 
-const hideInputError = (formElement, inputElement) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove('form__input_type_error');
-    errorElement.classList.remove('form__input-error_active');
-    errorElement.textContent = '';
-  };
+enableValidation();
 
-
-const checkInputValidity = (formElement, inputElement) => {
-    if (!inputElement.validity.valid) {
-      showInputError(formElement, inputElement, inputElement.validationMessage);
-    } else {
-      hideInputError(formElement, inputElement);
-    }
-  };
-
-//установка проверки всех полей в форме
-const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-    const buttonElement = formElement.querySelector('.popup__button');
-
-    toggleButtonState(inputList, buttonElement);
-
-    inputList.forEach((inputElement) => {
-        inputElement.addEventListener('input', () => {
-            checkInputValidity(formElement, inputElement);
-            toggleButtonState(inputList, buttonElement);
-          });
-    });
-  };
-
-//установка проверки всех форм на странице
-const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll('.popup__form'));
-    formList.forEach((formElement) => {
-      formElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
-      setEventListeners(formElement);
-      });
-  };
-
-  //проверка на заполнение всей формы
-  const hasInvalidInput = (inputList) => {
-    return inputList.some((inputElement) => {
-       return !inputElement.validity.valid;
-    })
-  };
-
-  function toggleButtonState(inputList, buttonElement) {
-    if (hasInvalidInput(inputList)){
-      buttonElement.classList.add('button_inactive');
-    } else {
-      buttonElement.classList.remove('button_inactive');
-    }
-  }
-
-  enableValidation();
 
 //закрытие попапа на оверлей (ограничение - сама форма)
 const overlays = document.querySelectorAll('.popup');
-const dontTouches = document.querySelectorAll('.popup__content');
 
 overlays.forEach(overlay => {
-  overlay.addEventListener('click', (event) => {
-    if (!event.target.closest('.popup__content')) {
-        closeModal(overlay);
-    }
-  });
+overlay.addEventListener('click', (event) => {
+  if (!event.target.closest('.popup__content')) {
+      closeModal(overlay);
+  }
+});
 });
 
 
-//закрытие попапа на esc
-function closeByEsc(evt) {
-    if (evt.key === "Escape") {
-      const openedPopup = document.querySelector('.popup_is-opened');
-      if (openedPopup) {
-        closeModal(openedPopup);
-      }
-    }
-  }
+//не отоюражается фото профиля, поэтому выражаю его через константу в js
+import avatar from '../src/images/avatar.jpg'; 
+
+const profileImage = document.querySelector('.profile__image');
+profileImage.style.backgroundImage = `url(${avatar})`;
