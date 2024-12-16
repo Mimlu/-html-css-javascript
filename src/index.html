@@ -14,7 +14,10 @@
   </header>
   <main class="content">
     <section class="profile page__section">
-      <div class="profile__image" style="background-image: url('../src/images/avatar.jpg')"></div>
+      <a href="#" class="profile-avatar__edit-button">
+        <div class="profile__image" style="background-image: url('../src/images/avatar.jpg')"></div>
+        <div class="overlay"></div>
+      </a>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button"></button>
@@ -41,7 +44,7 @@
           <span class="profile-name-input-error form__input-error"></span>
           <input id="profile-desc-input" type="text" name="description" class="popup__input popup__input_type_description" placeholder="Занятие" required minlength="2" maxlength="200">
           <span class="profile-desc-input-error form__input-error"></span>
-          <button type="submit" class="button popup__button">Сохранить</button>
+          <button type="submit" class="button popup__button" data-onload="Сохранение..." data-default="Сохранить">Сохранить</button>
       </form>
     </div>
   </div>
@@ -54,7 +57,7 @@
           <span class="card-name-input-error form__input-error"></span>
           <input id="card-url-input" type="url" name="link" class="popup__input popup__input_type_url" placeholder="Ссылка на картинку" required>
           <span class="card-url-input-error form__input-error"></span>
-          <button type="submit" class="button popup__button">Сохранить</button>
+          <button type="submit" class="button popup__button" data-onload="Сохранение..." data-default="Сохранить">Создать</button>
       </form>
     </div>
   </div>
@@ -63,6 +66,18 @@
       <button type="button" class="popup__close"></button>
       <img src="" alt="" class="popup__image">
       <p class="popup__caption"></p>
+    </div>
+  </div>
+
+  <div class="popup popup_type_imgavatar">
+    <div class="popup__content smaller__form">
+      <button type="button" class="popup__close"></button>
+      <h3 class="popup__title">Обновить автора</h3>
+      <form class="popup__form" name="img-avatar" novalidate>
+        <input id="avatar-url-input" type="url" name="link" class="popup__input popup__input_type_url_av" placeholder="Ссылка на картинку" required>
+        <span class="avatar-url-input-error form__input-error"></span>
+        <button type="submit" class="button popup__button" data-onload="Сохранение..." data-default="Сохранить">Сохранить</button>
+       </form>
     </div>
   </div>
 </div>

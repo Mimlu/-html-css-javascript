@@ -10,10 +10,12 @@ const content = document.querySelector('.profile');
 const popupClose = page.querySelectorAll('.popup__close');
 const popupOpenprofile = content.querySelector('.profile__edit-button');
 const popupOpennewcard = content.querySelector('.profile__add-button');
+const popupOpenavatar = content.querySelector('.profile-avatar__edit-button');
 
 const profilePopup = page.querySelector('.popup_type_edit');
 const cardPopup = page.querySelector('.popup_type_new-card');
 const imagePopup = page.querySelector('.popup_type_image');
+const avatarImagePopup = page.querySelector('.popup_type_imgavatar');
 
 const popupImage = imagePopup.querySelector('.popup__image');
 const popupCaption = imagePopup.querySelector('.popup__caption');
@@ -24,6 +26,7 @@ export {template}
 profilePopup.classList.add('popup_is-animated');
 cardPopup.classList.add('popup_is-animated');
 imagePopup.classList.add('popup_is-animated');
+avatarImagePopup.classList.add('popup_is-animated');
 
 //Функция заполнения карточки данными
 function fillCard(cardElement, data) {
@@ -75,7 +78,6 @@ popupClose.forEach(button => {
       closeModal(popup);
     });
 });
-
 
 
 //заполнение анкеты профиля
@@ -149,6 +151,33 @@ newCardForm.addEventListener('submit', (event) => {
 enableValidation();
 
 
+//открытие попапа изменения аватарки
+popupOpenavatar.addEventListener('click', () => {
+    openModal(avatarImagePopup);
+});
+
+
+const profileAvFormElement = page.querySelector('.popup__form[name="img-avatar"]');
+
+const ProfileAvInput = page.querySelector('.popup__input_type_url_av');
+const profAvatar = content.querySelector('.profile__image');
+
+//сохранение аватара профиля
+function handleProfileAvatarFormSubmit(evt) {
+    evt.preventDefault();
+
+    const NewAvInput = ProfileAvInput.value;
+    profAvatar.style.backgroundImage = `url(${NewAvInput})`;
+
+    closeModal(avatarImagePopup);
+
+    profileAvFormElement.reset();
+}
+
+profileAvFormElement.addEventListener('submit', handleProfileAvatarFormSubmit);
+
+
+
 //закрытие попапа на оверлей (ограничение - сама форма)
 const overlays = document.querySelectorAll('.popup');
 
@@ -162,7 +191,7 @@ overlay.addEventListener('click', (event) => {
 
 
 //не отоюражается фото профиля, поэтому выражаю его через константу в js
-import avatar from '../src/images/avatar.jpg'; 
+import avatar from '../src/images/avatar.jpg';
 
 const profileImage = document.querySelector('.profile__image');
 profileImage.style.backgroundImage = `url(${avatar})`;
