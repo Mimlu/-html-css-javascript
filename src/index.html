@@ -15,8 +15,9 @@
   <main class="content">
     <section class="profile page__section">
       <a href="#" class="profile-avatar__edit-button">
-        <div class="profile__image" style="background-image: url('../src/images/avatar.jpg')"></div>
-        <div class="overlay"></div>
+        <!-- <img class="profile__image" src="<%=require('../src/images/card_1.jpg')%>" alt=""> -->
+        <div class="profile__image" ></div>
+        <div class="overlay" ></div>
       </a>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -44,7 +45,7 @@
           <span class="profile-name-input-error form__input-error"></span>
           <input id="profile-desc-input" type="text" name="description" class="popup__input popup__input_type_description" placeholder="Занятие" required minlength="2" maxlength="200">
           <span class="profile-desc-input-error form__input-error"></span>
-          <button type="submit" class="button popup__button" data-onload="Сохранение..." data-default="Сохранить">Сохранить</button>
+          <button type="submit" id="button-save" class="button popup__button" data-onload="Сохранение..." data-default="Сохранить" >Сохранить</button>
       </form>
     </div>
   </div>
@@ -57,7 +58,7 @@
           <span class="card-name-input-error form__input-error"></span>
           <input id="card-url-input" type="url" name="link" class="popup__input popup__input_type_url" placeholder="Ссылка на картинку" required>
           <span class="card-url-input-error form__input-error"></span>
-          <button type="submit" class="button popup__button" data-onload="Сохранение..." data-default="Сохранить">Создать</button>
+          <button type="submit" id="button-create" class="button popup__button" >Создать</button>
       </form>
     </div>
   </div>
@@ -76,7 +77,7 @@
       <form class="popup__form" name="img-avatar" novalidate>
         <input id="avatar-url-input" type="url" name="link" class="popup__input popup__input_type_url_av" placeholder="Ссылка на картинку" required>
         <span class="avatar-url-input-error form__input-error"></span>
-        <button type="submit" class="button popup__button" data-onload="Сохранение..." data-default="Сохранить">Сохранить</button>
+        <button type="submit" id="button-save-av" class="button popup__button" data-onload="Сохранение..." data-default="Сохранить" >Сохранить</button>
        </form>
     </div>
   </div>
@@ -89,9 +90,11 @@
     <img class="card__image" src="" alt="" />
     <button type="button" class="card__delete-button"></button>
     <div class="card__description">
-      <h2 class="card__title">
-      </h2>
-      <button type="button" class="card__like-button"></button>
+      <h2 class="card__title"></h2>
+      <div class="card__button-like-container">
+        <button type="button" class="card__like-button"></button>
+        <span class="card__button-like-count"></span>
+      </div>
     </div>
   </li>
 </template>
